@@ -12,16 +12,10 @@ function iniciar() {
   chkTextoVermelho.addEventListener('change', habilitarMudarTamanho);
 
   var chkTituloItalico = document.querySelector('#chkTituloItalico');
-  chkTituloItalico.addEventListener('change', tituloItalico)
-}
+  chkTituloItalico.addEventListener('change', tituloItalico);
 
-function tituloItalico(){
-  
-  this.classList.add('TituloItalico');
-}
-
-function tituloItalico(){
-  this.classList.remove('TituloItalico');
+  var chkInverterDiaMes = document.querySelector('#chkInverterDiaMes');
+  chkInverterDiaMes.addEventListener('change', mudaData);
 }
 
 function habilitarMudarTamanho() {
@@ -93,5 +87,35 @@ function trocarBackground() {
     //e alteramos o texto do botão
     tabela.classList.add(classeBG);
     this.value = 'Background padrão';
+  }
+}
+function tituloItalico() {
+  var classe = 'textoItalico';
+  var cabecalho = document.querySelector('#cabecalhoBanda');  
+
+  //Aqui, this é o checkbox!
+  if(this.checked) {
+    cabecalho.classList.add(classe);
+  }
+  else {
+    cabecalho.classList.remove(classe);    
+  }
+}
+function mudaData() {
+ 
+  var aux_Data_Array = document.getElementsByClassName('nascimento');  
+  var aux_data = "";
+  if(this.checked) {
+    for(var i = 1; i < aux_Data_Array .length; i++) {
+      aux_data = aux_Data_Array[i].textContent;
+      aux_Data_Array[i].textContent = aux_data.substring(3,5) + "/" + aux_data.substring(0,2) + aux_data.substring(5,10);
+    }
+    
+  }
+  else {
+    for(var i = 1; i < aux_Data_Array .length; i++) {
+      aux_data = aux_Data_Array[i].textContent;
+      aux_Data_Array[i].textContent = aux_data.substring(3,5) + "/" + aux_data.substring(0,2) + aux_data.substring(5,10);
+    }
   }
 }
